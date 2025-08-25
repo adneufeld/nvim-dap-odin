@@ -32,6 +32,7 @@ A Neovim plugin that provides automated build and debug configurations for the [
   name = "nvim-dap-odin",
   dependencies = { "mfussenegger/nvim-dap" },
   config = function()
+    -- optionally override options by passing to setup({...})
     require("nvim-dap-odin").setup()
   end,
 }
@@ -44,6 +45,7 @@ use {
   'path/to/nvim-dap-odin', -- Use the correct path to your local plugin
   requires = { "mfussenegger/nvim-dap" },
   config = function()
+    -- optionally override options by passing to setup({...})
     require("nvim-dap-odin").setup()
   end
 }
