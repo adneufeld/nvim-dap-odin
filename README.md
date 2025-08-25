@@ -4,8 +4,8 @@ A Neovim plugin that provides automated build and debug configurations for the [
 
 ## Features
 
-* **Automatic Building:** Smart, automated building of Odin projects with either debug or release flags via `:OdinBuild` and `:OdinDebug`.
-* **One-Command Debugging:** Build and debug your project in a single step.
+* **Automatic Building:** Execute builds of Odin projects with either debug or release flags via `:OdinBuild` and `:OdinDebug`.
+* **One-Command Debugging:** Build and debug your project by executing a single DAP launch configuration.
 * **Configurable Build Options:** Easily customize build commands, flags, and output directories.
 
 ---
