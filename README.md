@@ -1,6 +1,6 @@
 # `nvim-dap-odin`
 
-A Neovim plugin that provides automated build and debug configurations for the [Odin programming language](https://odin-lang.org/) with [nvim-dap](https://github.com/mfussenegger/nvim-dap). 🚀
+A Neovim plugin that provides automated build and debug configurations for the [Odin programming language](https://odin-lang.org/) with [nvim-dap](https://github.com/mfussenegger/nvim-dap). 
 
 ## Features
 
