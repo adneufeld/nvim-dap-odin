@@ -4,12 +4,9 @@ A Neovim plugin that provides automated build and debug configurations for the [
 
 ## Features
 
-* **Automatic Building:** Smart, automated building of Odin projects with either debug or release flags.
-* **Intelligent File Detection:** Searches for your main file by looking for `main.odin` or files containing a `main :: proc` definition, now with a configurable search depth.
+* **Automatic Building:** Smart, automated building of Odin projects with either debug or release flags via `:OdinBuild` and `:OdinDebug`.
 * **One-Command Debugging:** Build and debug your project in a single step.
 * **Configurable Build Options:** Easily customize build commands, flags, and output directories.
-* **Cross-Platform Support:** Works seamlessly on Windows, Linux, and macOS.
-* **Integrated Notifications:** Get real-time build status updates directly in Neovim.
 
 ---
 
@@ -116,34 +113,17 @@ The plugin automatically registers these debug configurations:
 
 ### Workflow Examples
 
-#### Quick Debug Session
-
-1.  Open your Odin project in Neovim.
-2.  Run `:OdinDebug`.
-3.  The plugin builds your project with debug flags and starts debugging automatically.
-
 #### Using a DAP UI
 
-1.  Open your preferred DAP UI (e.g., [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)).
-2.  Select "Odin: Auto-build and Launch" from the available configurations.
-3.  Set your breakpoints and begin debugging.
-
------
-
-## Main File Detection
-
-The plugin's logic for finding your main file is now more robust. It:
-
-1.  Starts in the current directory and searches upwards.
-2.  First looks for a file named `main.odin`.
-3.  If `main.odin` isn't found, it searches all `*.odin` files for the `main :: proc` pattern.
-4.  It uses the first file containing a main procedure it finds within the configured `max_search_depth`.
+1.  Set your breakpoints.
+2.  Open your preferred DAP UI (e.g., [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)).
+3.  Select "Odin: Auto-build and Launch" from the available configurations and begin debugging.
 
 -----
 
 ## Build Process
 
-The plugin executes the build command from the **project's root directory**. It names the output executable based on the directory name (e.g., `my_project.exe`).
+The plugin executes the build command from the **project's root directory**. It names the output executable based on the directory name (e.g., `my_project.exe`). It does this by walking the directory tree to find the `main` package or the `main :: proc()`. 
 
 The commands executed are:
 
@@ -159,7 +139,7 @@ The commands executed are:
   * **No main file detected**
       * **Solution:** Verify that your project has either a `main.odin` file or an Odin file containing a `main :: proc` definition. The plugin will search upwards to find it.
   * **Debugger doesn't start**
-      * **Solution:** Confirm that `codelldb` is installed and properly configured with `nvim-dap`. Make sure the built executable has debug symbols by checking your `build_flags` configuration.
+      * **Solution:** Confirm that `codelldb` is installed and properly configured with `nvim-dap`. Make sure the built executable has debug symbols by checking your `build_flags` configuration. Also make sure you've set some breakpoints! If not it will just load and exit immediately. 
   * **Executable permissions**
       * **Solution:** If the build is successful but the debugger can't launch, check the file permissions on the generated executable to ensure it's executable.
 
